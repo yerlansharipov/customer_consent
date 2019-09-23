@@ -1,6 +1,6 @@
 # The Effect of Twitter Sentiments on Stock Valuation
 
-One Paragraph of project description goes here
+As social media penetrates all aspects of our life, it is also reflects people opinion on particular problem, product or service. With that in mind we want to explore whether twitter sentiments affects to stock market valuation of company.   
 
 ## Getting Started
 
