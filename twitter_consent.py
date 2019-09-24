@@ -1,17 +1,19 @@
 #!/anaconda3/bin/python
-import tweepy #https://github.com/tweepy/tweepy
+import tweepy as tw#https://github.com/tweepy/tweepy
 import json
 from google.cloud import language_v1
 from google.cloud.language_v1 import enums
 import six
 from cred_twitter import param
+import pandas as pd
+from preprocessor.api import clean, tokenize, parse
 
 
 #Twitter API credentials
 consumer_key = param()[0]
 consumer_secret = param()[1]
-access_key = param()[2]
-access_secret = param()[3]
+access_token = param()[2]
+access_token_secret = param()[3]
 
 
 import json2table
@@ -88,12 +90,50 @@ def sample_analyze_sentiment(content):
 
     print('Magnitude: {}'.format(sentiment.magnitude))
 
+#parsing data from twitter
+def parse_tweets(user, date):
+
+    #twitter authentication
+    auth = tw.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+    api = tw.API(auth, wait_on_rate_limit=True)
+    print("### Info: Succesfully authenticated in Twitter")
+
+    #parse tweets
+    tweets = tw.Cursor(api.search, q=user, lang="en", since=date, tweet_mode="extended").items()
+    tweets_raw = pd.DataFrame(columns=["Date","Location", "Text"])
+    i = 0
+    for tweet in tweets:
+        tweets_raw = tweets_raw.append({'Date': tweet.created_at, 'Location':tweet.user.location, 'Text':tweet.full_text}, ignore_index=True)
+        i += 1
+        if i == 10:
+            break
+    print("### Info: Raw data is collected based on mention of ", user)
+
+    return tweets_raw
+
+#cleaning the data
+def data_preprocessing (tweets_raw):
+    tweets_clean = pd.DataFrame(columns=["Date","Location", "Text"])
+
+    for i in range(tweets_raw.shape[0]):
+        clean_text = clean(tweets_raw["Text"][i])
+        tweets_raw["Text"][i] = clean_text
+    
+    return tweets_raw
+
+
 if __name__ == '__main__':
+
+
     #pass in the username of the account you want to download
     #tweet = get_all_tweets("@Ibra_official")
-    tweet = get_all_tweets("@Tesla")
+    #tweet = get_all_tweets("@Tesla")
+    tweets_raw = parse_tweets("@SpaceX", "2019-09-23")
+    tweets_cleaned = data_preprocessing (tweets_raw)
     
-    sample_analyze_sentiment(tweet)    
+    
+    #sample_analyze_sentiment(tweet)    
     
 
 
