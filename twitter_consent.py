@@ -92,7 +92,7 @@ def sample_analyze_sentiment(content):
 
 #parsing data from twitter
 def parse_tweets(user, date):
-
+    
     #twitter authentication
     auth = tw.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
