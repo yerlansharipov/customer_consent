@@ -5,19 +5,19 @@ With Twitter users generating ample data during a day on multiple topics, the te
 Shareholders and company executives may then be able to predict if dissatisfaction affects the value of their company and holdings
 
 <img align="right" src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/market_summary.png width=400/>
-+++
++
 
 ## The System Architecture
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/system_architecture.png width=1200/>
-+++
++
 
 ## System Components
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/system_components.png width=800/>
-+++
++
 
 ## Sample output
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/sample_output_graph.png width=800/>
-+++
++
 
 ## Lessons Learned
 - Open-source API’s are tricky because there is no direct assistance from the API’s owners
