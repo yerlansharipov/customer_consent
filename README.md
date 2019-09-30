@@ -1,5 +1,5 @@
 ## The Correlation of Twitter Sentiment with Stock Valuation
-<img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/market_summary.png width=400/>
+<img align="right" src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/market_summary.png width=400/>
 
 Can Twitter Help Investors Predict the Value of a Company’s Stock?
 
