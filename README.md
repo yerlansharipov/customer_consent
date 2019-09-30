@@ -1,4 +1,5 @@
 # The Correlation of Twitter Sentiment with Stock Valuation
+![Screenshot](introduction_to_problem.jpg)
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/introduction_to_problem.jpg width=1200/>
 
 ## The System Architecture
