@@ -7,4 +7,4 @@ As social media penetrates all aspects of our life, it is also reflects people o
 
 
 ## Sample output
-<img src=https://github.com/yerlansharipov/customer_consent/blob/master/sample_output.png width=1200/>
+<img src=https://github.com/yerlansharipov/customer_consent/blob/master/sample_out.png width=1200/>
