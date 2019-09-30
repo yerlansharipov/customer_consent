@@ -3,13 +3,13 @@ Can Twitter Help Investors Predict the Value of a Company’s Stock?
 
 With Twitter users generating ample data during a day on multiple topics, the team  mines such data, with mentions of a specific company. The sentiment of these tweets is then correlated to the closing value of a stock by day. 
 Shareholders and company executives may then be able to predict if dissatisfaction affects the value of their company and holdings
-<img src=https://github.com/yerlansharipov/customer_consent/blob/master/introduction_to_problem.jpg width=400/>
+<img src=https://github.com/yerlansharipov/customer_consent/blob/master/introduction_to_problem.png width=400/>
 
 ## The System Architecture
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/arch.png width=1200/>
 
 ## System Components
-<img src=https://github.com/yerlansharipov/customer_consent/blob/master/system_descritption.jpg width=800/>
+<img src=https://github.com/yerlansharipov/customer_consent/blob/master/system_descritption.png width=800/>
 
 ## Sample output
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/sample_out.png width=1200/>
