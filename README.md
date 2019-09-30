@@ -15,15 +15,18 @@ Shareholders and company executives may then be able to predict if dissatisfacti
 
 ## The System Architecture
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/system_architecture.png width=1200/>
-
+<br/><br/>
+<br/><br/>
 
 ## System Components
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/system_components.png width=800/>
-
+<br/><br/>
+<br/><br/>
 
 ## Sample output
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/sample_output_graph.png width=400/>
-
+<br/><br/>
+<br/><br/>
 
 ## Lessons Learned
 - Open-source API’s are tricky because there is no direct assistance from the API’s owners
