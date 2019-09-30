@@ -12,4 +12,4 @@
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/sample_out.png width=1200/>
 
 ## Lessons Learned
-<img src=https://github.com/yerlansharipov/customer_consent/blob/master/lessons_learned.jpg width=1200/>
+<img src=https://github.com/yerlansharipov/customer_consent/blob/master/lessons_learned.png width=1200/>
