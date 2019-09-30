@@ -3,6 +3,7 @@ import tweepy as tw
 from google.cloud import language_v1
 from google.cloud.language_v1 import enums
 from cred_twitter import param
+from cred_alpha_vantage import av_cred
 import pandas as pd
 import six
 from preprocessor.api import clean, tokenize, parse
@@ -11,12 +12,17 @@ import numpy as np
 import gmaps 
 import gmaps.datasets 
 from geopy.geocoders import Nominatim
+from matplotlib import pyplot as plt
+import datetime
 
 #Twitter API credentials
 consumer_key = param()[0]
 consumer_secret = param()[1]
 access_token = param()[2]
 access_token_secret = param()[3]
+
+#Alpha Vantage key
+av_key = av_cred()
 
 #parsing data from twitter
 def parse_tweets(user, date):
@@ -32,7 +38,7 @@ def parse_tweets(user, date):
 
     #parse tweets
     print("### Info: Raw data collection based on mention of ", user,"...", end='')    
-    tweets = tw.Cursor(api.search, q=user, lang="en", since=date, tweet_mode="extended").items()
+    tweets = tw.Cursor(api.search, q=user, lang="en", since=date, until='2019-09-29',tweet_mode="extended").items(10)
     tweets_raw = pd.DataFrame(columns=["Date","Location", "Lat", "Lon", "Text", "Score", "Magnitude"])
     i = 0
     for tweet in tweets:
@@ -119,23 +125,125 @@ def heatmap(tweets_location):
     fig.add_layer(gmaps.heatmap_layer(locations, weights=weights))
     print(fig) 
 
-
     print("DONE!")
 
     return 0
 
+# parse stock information
+def get_stock_close(comp, s1, s2):
+
+    ALPHA_VANTAGE_API_KEY = av_key 
+    
+    ts = TimeSeries(key=ALPHA_VANTAGE_API_KEY, output_format='pandas', indexing_type='integer')
+    symb = 'NYSE:%(name)s' % dict(name=comp)
+    #print(symb)
+    
+    interday_data, meta_data = ts.get_daily_adjusted(symbol=symb, outputsize='full')
+    
+    # Print the information of the data
+    alldatesstr = interday_data['index']
+    alldates = []
+
+    for idem in range(0,len(alldatesstr)):
+        alldates.append(datetime.strptime(alldatesstr[idem], '%Y-%m-%d'))
+    
+    allclose = interday_data['4. close']
+    #print(alldates)
+    
+    #print(alldates[1])
+    #print(alldates[2])
+    #print(alldates[3])
+
+    date1 = datetime.strptime(s1, '%Y-%m-%d') 
+    date2 = datetime.strptime(s2, '%Y-%m-%d')
+
+    date = []
+    close = []
+  
+
+    for idam in range(0,len(alldates)):
+        if ((alldates[idam]>=date1) and (alldates[idam]<=date2)):
+            date.append(alldates[idam])
+            close.append(allclose[idam])
+
+    #print('The date of interest are ',date)
+    """
+    with open('tesla_stock_try.csv', 'w') as f:
+        writer = csv.writer(f, delimiter='\t')
+    writer.writerows(zip(date,close))
+    """
+
+    return close
+
+# plot the graph
+def plotting (tweets_raw):
+
+    tweets_raw.plot(kind='scatter',x='Magnitude',y='Score',color='red')
+    plt.show()
+
+    return 0
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import csv
+from datetime import datetime 
+from alpha_vantage.timeseries import TimeSeries
+
+from datetime import datetime, date, time, timedelta
+
+# converting time string to datetime format for comparison reasons
+#def convert(s):
+#  return datetime.strptime(s, '%Y-%m-%d')
+
+def date_list_gen(start, end):
+    start = datetime.strptime(start, '%Y-%m-%d')
+    end = datetime.strptime(end, '%Y-%m-%d')
+    step = timedelta(days=1)
+    date_range = []
+    while start <= end:
+        date_range.append(str(start.date()))
+        #print(start.date())
+        start += step
+
+    return date_range
+
+
 if __name__ == '__main__':
 
-    #tweets_raw = parse_tweets("@SpaceX", "2019-09-23")
-    #tweets_cleaned = data_preprocessing (tweets_raw)
-    #tweets_sentiment = analyze_sentiment(tweets_cleaned)
+    start_date = '2019-09-23'
+    end_date = '2019-09-27'
+    comp_stock_mark_name = 'TSLA'
+    comp_twitter_name = '@SpaceX'
+
+    date_range = date_list_gen (start_date, end_date)
+    stocks = get_stock_close(comp_stock_mark_name,start_date,end_date)
+
+    tweets_raw = parse_tweets(comp_twitter_name, date_range)
+    print(tweets_raw)
+    exit()
+    tweets_cleaned = data_preprocessing (tweets_raw)
+    tweets_sentiment = analyze_sentiment(tweets_cleaned)
+    
+    print(tweets_raw)
+    #plotting(tweets_raw)
     #tweets_location = geolocation(tweets_sentiment)
-    heatmap(4)
+    #heatmap(4)
     pass
 
-    
-        
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
