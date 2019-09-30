@@ -6,7 +6,7 @@ Shareholders and company executives may then be able to predict if dissatisfacti
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/introduction_to_problem.png width=400/>
 
 ## The System Architecture
-<img src=https://github.com/yerlansharipov/customer_consent/blob/master/arch.png width=1200/>
+<img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/system_architecture.png width=1200/>
 
 ## System Components
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/system_descritption.png width=800/>
