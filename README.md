@@ -1,10 +1,13 @@
 ## The Correlation of Twitter Sentiment with Stock Valuation
-<img align="right" src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/market_summary.png width=400/>
+<img align="right" src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/market_summary.png width=300/>
 
 Can Twitter Help Investors Predict the Value of a Company’s Stock?
 
+
 With Twitter users generating ample data during a day on multiple topics, the team  mines such data, with mentions of a specific company. The sentiment of these tweets is then correlated to the closing value of a stock by day. 
 Shareholders and company executives may then be able to predict if dissatisfaction affects the value of their company and holdings
+
+
 
 
 
