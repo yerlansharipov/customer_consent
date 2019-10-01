@@ -21,8 +21,26 @@ Shareholders and company executives may then be able to predict if dissatisfacti
 <br/><br/>
 
 ## How to Use
-<img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/how_to_use.PNG width=400/>
-<br/><br/>
+### Necessary Information:
+- Company name and stock market abbreviation:
+e.g. Tesla’s market abbreviation  TSLA
+- Date range for needed analysis:
+e.g. 2019-09-23 to 2019-09-27
+
+### Necessary Programs:
+Python
+
+### Necessary Libraries:
+Installable using pip:
+tweepy
+pandas
+six
+numpy
+matplotlib
+alpha-vantage
+csv
+google-cloud-language
+
 
 ## Sample output
 <img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/sample_output_graph.png width=400/>
