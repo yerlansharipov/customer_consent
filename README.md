@@ -21,7 +21,7 @@ Shareholders and company executives may then be able to predict if dissatisfacti
 <br/><br/>
 
 ## How to Use
-<img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/how_to_use.png width=600/>
+<img src=https://github.com/yerlansharipov/customer_consent/blob/master/pictures/how_to_use.PNG width=400/>
 <br/><br/>
 
 ## Sample output
